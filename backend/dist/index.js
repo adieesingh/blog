@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 // Making signup route
-app.post("/api/v1/signup", async (req, res) => {
+app.post("v1/signup", async (req, res) => {
     console.log("Heelo from backend signup");
     try {
         const username = req.body.username;
@@ -38,7 +38,7 @@ app.post("/api/v1/signup", async (req, res) => {
     }
 });
 //  making sigin Route
-app.post("/api/v1/signin", async (req, res) => {
+app.post("v1/signin", async (req, res) => {
     try {
         const username = req.body.username;
         const password = req.body.password;
@@ -53,10 +53,10 @@ app.post("/api/v1/signin", async (req, res) => {
         }
         // Making auth
         if (response) {
-            const token = jwt.sign({ username, id: response._id }, process.env.JWT_SECRECT || "adarsh1233uu8ur");
+            const token = jwt.sign({ username, id: response._id }, process.env.JWT_SECRECT);
             return res.status(200).json({
                 message: "Sign In Sucessfully",
-                token
+                token: token
             });
         }
     }
@@ -68,7 +68,7 @@ app.post("/api/v1/signin", async (req, res) => {
     }
 });
 // Write a blog 
-app.post("/api/v1/blog", authMiddleware, async (req, res) => {
+app.post("/v1/blog", authMiddleware, async (req, res) => {
     try {
         const title = req.body.title;
         const content = req.body.content;
@@ -93,6 +93,19 @@ app.post("/api/v1/blog", authMiddleware, async (req, res) => {
         return res.status(500).json({
             message: "Something went wrong",
             error
+        });
+    }
+});
+app.get("/v1/post", async (req, res) => {
+    const response = await ContentModel.find();
+    if (!response) {
+        return res.status(411).json({
+            message: "Error While fetching data"
+        });
+    }
+    if (response) {
+        return res.status(200).json({
+            message: response
         });
     }
 });

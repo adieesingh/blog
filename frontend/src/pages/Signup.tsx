@@ -1,7 +1,7 @@
 import axios from "axios";
-import { ButtonProps } from "./components/ButtonProps";
-import { Header } from "./components/Header";
-import { InputBox } from "./components/InputBox";
+import { ButtonProps } from "../components/ButtonProps";
+import { Header } from "../components/Header";
+import { InputBox } from "../components/InputBox";
 import { useState } from "react";
 
 export const Signup = () => {
@@ -49,6 +49,8 @@ export const Signup = () => {
           placeholder="John Doe"
           type="text"
           value={name}
+          
+
           onChange={(e) => setName(e.target.value)}
         ></InputBox>
         <InputBox
@@ -71,9 +73,10 @@ export const Signup = () => {
         ></InputBox>
 
         <ButtonProps
+          // height="lg"
           text="Sign In"
-          size="lg"
-          variant="primary"
+          // size="lg"
+          // variant="primary"
           onClick={handle}
         ></ButtonProps>
       </div>

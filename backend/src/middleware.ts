@@ -8,11 +8,13 @@ export const authMiddleware =(req:Request,res:Response,next:NextFunction)=>{
                 message:"Token Not Found"
             })
         }
-    const decode= jwt.verify(header,process.env.JWT_SECRECT as string ||"adarsh1233uu8ur")
+    const decode= jwt.verify(header,process.env.JWT_SECRECT as string)
     
     if(decode){
     //@ts-ignore
     req.userId = decode.id
+    //@ts-ignore
+    req.userName=decode.name
     next()
     }
     if(!decode){

@@ -7,10 +7,12 @@ export const authMiddleware = (req, res, next) => {
                 message: "Token Not Found"
             });
         }
-        const decode = jwt.verify(header, process.env.JWT_SECRECT || "adarsh1233uu8ur");
+        const decode = jwt.verify(header, process.env.JWT_SECRECT);
         if (decode) {
             //@ts-ignore
             req.userId = decode.id;
+            //@ts-ignore
+            req.userName = decode.name;
             next();
         }
         if (!decode) {
