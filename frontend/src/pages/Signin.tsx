@@ -3,11 +3,13 @@ import { Header } from "../components/Header"
 import { InputBox } from "../components/InputBox"
 import { ButtonProps } from "../components/ButtonProps"
 import axios from "axios"
+import { Link, useNavigate } from "react-router"
 
 
 export const SignIn=()=>{
     const [username,setUsername]=useState("")
     const [password,setPassword]=useState("")
+    const navigate =useNavigate()
     const handle =async ()=>{
         try {
         const response = await axios.post("http://localhost:3000/api/v1/signin",{
@@ -18,6 +20,7 @@ export const SignIn=()=>{
         alert("Sign In Sucessfully")
         console.log(response.data.token)
         localStorage.setItem("token",response.data.token)
+        navigate('/')
      }
      if(!response){
         alert("Not response")
@@ -29,13 +32,23 @@ export const SignIn=()=>{
      
     }
     return <div className="h-screen w-100% flex justify-center items-center border-r border-[]">
-            <div className="h-auto w-[50%] border border-[#E5E5E5] flex flex-col p-4">
+            <div className="h-auto w-[30%] border border-[#E5E5E5] flex flex-col p-4">
                 <Header bold="dark" size="lg"  text="Sign In"></Header>
                 <InputBox text="Username" type="text" placeholder="JohnDoe@123" name="username" value={username} onChange={(e)=>setUsername(e.target.value)} ></InputBox>
                 <InputBox text="Password" type="password" placeholder="John@1234" name="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}></InputBox>
+                <div className="py-4">
+
+                </div>
                 <ButtonProps 
-                
+                  align="justify-center"
+                  varaint="primary"
+                  rounded={true}
+                  size="lg"
+
                  onClick={handle} text="Sign In"></ButtonProps>
+                 <span>Already Have a Account/</span>
+            <Link  to={'/signup'}>Sign Up</Link>
             </div>
+            
     </div>
 }

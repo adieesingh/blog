@@ -4,7 +4,9 @@ export interface Headerprops{
     text:string
     size?:Sizes
     bold?:bolds
+    align?:boolean
 }
+
 const boldVaraint ={
     light:"font-medium",
     medium:"font-semibold",
@@ -17,5 +19,5 @@ const sizeVaraint ={
 }
 
 export const Header =(props:Headerprops)=>{
-    return <h2 className={`${sizeVaraint[props.size]} ${boldVaraint[props.bold]}`}>{props.text}</h2>
+    return <h2 className={`${sizeVaraint[props.size]} ${boldVaraint[props.bold]} ${props.align?"justify-center text-center":""}`}>{props.text}</h2>
 }

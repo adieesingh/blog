@@ -1,10 +1,10 @@
-import './App.css'
-// import { Content } from './components/Content'
-import { MainContent } from './components/MainContent'
-import { NavBar } from './components/NavBar'
-// import { RightSideBar } from './components/RightSideBar'
-import { SideBar } from './components/SideBar'
-import { StaffPicks } from './components/StaffPicks'
+import { BrowserRouter, Route,  Routes } from 'react-router'
+import { Dashboard } from './pages/Dashboard'
+import { SignIn } from './pages/Signin'
+import { Signup } from './pages/Signup'
+import { Post } from './pages/Post'
+import { useRecoilState } from 'recoil'
+import { isLoggedIn, isLoggedInAtom } from './atom/IsLoggedIn'
 
 
 
@@ -17,21 +17,19 @@ import { StaffPicks } from './components/StaffPicks'
 
 
 function App() {
- 
-
+  const [isLoggedIn,setLoggedIn]=useRecoilState(isLoggedInAtom)
+   
   return (
     <div>
-      <div>
-        <NavBar headers={{text:"Medium", bold:"dark",size:"lg" }}></NavBar>
-      </div>
-      <div className='flex'>
-        <SideBar></SideBar>
-        <MainContent></MainContent>
-        <StaffPicks></StaffPicks>
-
-      </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Dashboard setLoggedIn={setLoggedIn}></Dashboard>}></Route>
+      <Route path="/signin" element={<SignIn></SignIn>}></Route>
+      <Route path='/sigmup' element={<Signup></Signup>}></Route>
+      <Route path='/post' element={<Post></Post>}></Route>
+    </Routes>
+    </BrowserRouter>  
     </div>
-    
   )
 }
 

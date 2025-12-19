@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 // Making signup route
-app.post("v1/signup", async (req, res) => {
+app.post("/api/v1/signup", async (req, res) => {
     console.log("Heelo from backend signup");
     try {
         const username = req.body.username;
@@ -38,7 +38,7 @@ app.post("v1/signup", async (req, res) => {
     }
 });
 //  making sigin Route
-app.post("v1/signin", async (req, res) => {
+app.post("/api/v1/signin", async (req, res) => {
     try {
         const username = req.body.username;
         const password = req.body.password;

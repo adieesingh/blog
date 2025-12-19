@@ -13,10 +13,12 @@ import { hover } from "../icons/PostIcon"
    varaint?:Variants
    align?:"justify-center"
    size?:Sizes
+   rounded?:boolean
 
    
   
 }
+  
 type Sizes ="sm"|"md"|"lg"
 const sizeVaraint={
   sm:"text-sm",
@@ -29,7 +31,7 @@ const VariantsStyle={
   primary:"bg-purple-500 text-white",
   secondary:"bg-red-500 text-white"
 }
-const padding ="py-5"
+const padding ="py-3"
 
 
 export const ButtonProps=(props:Button)=>{

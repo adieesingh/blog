@@ -3,11 +3,13 @@ import { ButtonProps } from "../components/ButtonProps";
 import { Header } from "../components/Header";
 import { InputBox } from "../components/InputBox";
 import { useState } from "react";
+import { Link, useNavigate } from "react-router";
 
 export const Signup = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate =useNavigate()
 
   const handle = async () => {
     console.log("First step");
@@ -26,6 +28,7 @@ export const Signup = () => {
       if (response) {
         alert("Signup Sucessfully");
         console.log("Register");
+        navigate('/signin')
       }
       if (!response) {
         alert("Not register");
@@ -42,7 +45,13 @@ export const Signup = () => {
   return (
     <div className="h-screen w-100vw flex justify-center items-center">
       <div className="w-[30%] h-auto border border-[#E5E5E5] flex flex-col p-4 justify-center">
-        <Header text="Sign Up"></Header>
+        <Header 
+        bold="dark"
+        size="lg"
+        align={true}
+
+
+        text="Sign Up"></Header>
         <InputBox
           text="Name"
           name="name"
@@ -71,14 +80,28 @@ export const Signup = () => {
             setPassword(e.target.value);
           }}
         ></InputBox>
+            <div className="py-3">
 
-        <ButtonProps
-          // height="lg"
-          text="Sign In"
-          // size="lg"
-          // variant="primary"
-          onClick={handle}
+            </div>
+        
+          <ButtonProps
+        align="justify-center"
+        rounded={true}
+        varaint="primary"
+        size="md"
+
+
+        
+          
+        text="Sign In"
+          
+        onClick={handle}
+        
         ></ButtonProps>
+        <span>Already Have a Account/</span>
+        <Link  to={'/signin'}>signin</Link>
+           
+      
       </div>
     </div>
   );
