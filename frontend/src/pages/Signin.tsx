@@ -4,6 +4,7 @@ import { InputBox } from "../components/InputBox"
 import { ButtonProps } from "../components/ButtonProps"
 import axios from "axios"
 import { Link, useNavigate } from "react-router"
+import { BACKEND_URL } from "../config"
 
 
 export const SignIn=()=>{
@@ -12,7 +13,7 @@ export const SignIn=()=>{
     const navigate =useNavigate()
     const handle =async ()=>{
         try {
-        const response = await axios.post("http://localhost:3000/api/v1/signin",{
+        const response = await axios.post(`${BACKEND_URL}/api/v1/signin`,{
         username,
         password
      })

@@ -12,7 +12,7 @@ app.use(cors())
 
 // Making signup route
 app.post("/api/v1/signup",async (req,res)=>{
-    console.log("Heelo from backend signup")
+   
     try {
     const username = req.body.username
     const password = req.body.password

@@ -4,6 +4,7 @@ import { Header } from "../components/Header";
 import { InputBox } from "../components/InputBox";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { BACKEND_URL } from "../config";
 
 export const Signup = () => {
   const [name, setName] = useState("");
@@ -15,7 +16,7 @@ export const Signup = () => {
     console.log("First step");
 
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/signup", {
+      const response = await axios.post(`${BACKEND_URL}/api/v1/signup`, {
        username,
        password,
        name
