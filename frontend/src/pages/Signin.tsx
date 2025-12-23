@@ -4,16 +4,18 @@ import { InputBox } from "../components/InputBox"
 import { ButtonProps } from "../components/ButtonProps"
 import axios from "axios"
 import { Link, useNavigate } from "react-router"
-import { BACKEND_URL } from "../config"
+
 
 
 export const SignIn=()=>{
     const [username,setUsername]=useState("")
     const [password,setPassword]=useState("")
     const navigate =useNavigate()
+    const apiUrl= import.meta.env.VITE_APP_BACKEND_URL
+   //  console.log(import.meta.env.VITE_APP_BACKEND_URL)
     const handle =async ()=>{
         try {
-        const response = await axios.post(`${BACKEND_URL}/api/v1/signin`,{
+        const response = await axios.post(`${apiUrl}/api/v1/signin`,{
         username,
         password
      })

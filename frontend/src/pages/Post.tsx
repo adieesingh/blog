@@ -4,7 +4,7 @@ import { InputBoxContent } from "../components/InputBoxPost"
 import axios from "axios"
 import { NavBar } from "../components/NavBar"
 import { ButtonProps } from "../components/ButtonProps"
-import { BACKEND_URL } from "../config"
+
 
 
 
@@ -15,7 +15,7 @@ export const Post =()=>{
         try {
             console.log("hello there")
        
-        await axios.post(`${BACKEND_URL}/v1/blog`,{
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/v1/blog`,{
             title,
             content
         },{

@@ -4,19 +4,21 @@ import { Header } from "../components/Header";
 import { InputBox } from "../components/InputBox";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { BACKEND_URL } from "../config";
+
+
 
 export const Signup = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate =useNavigate()
-
+  const apiUrl = import.meta.env.VITE_APP_BACKEND_URL
+  console.log(import.meta.env.VITE_APP_BACKEND_URL)
   const handle = async () => {
     console.log("First step");
 
     try {
-      const response = await axios.post(`${BACKEND_URL}/api/v1/signup`, {
+      const response = await axios.post(`${apiUrl}/api/v1/signup`, {
        username,
        password,
        name

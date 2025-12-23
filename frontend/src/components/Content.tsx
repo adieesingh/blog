@@ -3,11 +3,13 @@ import { ReadMore } from "./ReadMore";
 import axios from 'axios';
 
 
+
 export function Content(){
   const [data,setData]=useState([])
-  
+  const apiUrl =import.meta.env.VITE_APP_BACKEND_URL
+  console.log(import.meta.env.VITE_APP_BACKEND_URL)
  useEffect(()=>{
-      axios.get("http://localhost:3000/v1/post").then((response)=>{
+      axios.get(`${apiUrl}/v1/post`).then((response)=>{
         
         setData(response.data.message)
         
