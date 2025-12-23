@@ -4,6 +4,7 @@ import { InputBoxContent } from "../components/InputBoxPost"
 import axios from "axios"
 import { NavBar } from "../components/NavBar"
 import { ButtonProps } from "../components/ButtonProps"
+import { useNavigate } from "react-router"
 
 
 
@@ -11,20 +12,26 @@ import { ButtonProps } from "../components/ButtonProps"
 export const Post =()=>{
     const [title,setTitle]=useState("")
     const [content,setContent]=useState("")
+    const navigate =useNavigate()
     const handle =async ()=>{
         try {
-            console.log("hello there")
+            console.log(import.meta.env.VITE_APP_BACKEND_URL)
        
-        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/v1/blog`,{
+        await axios.post(`${import.meta.env.VITE_APP_BACKEND_URL}/v1/blog`,{
             title,
             content
         },{
             headers:{
                 'Authorization':`${localStorage.getItem('token')}`
             }
-        }).then((response)=>{
+            
+        
+        },
+    
+).then(()=>{
             alert("data inserted succesfully")
-            console.log(response.data)
+            
+            navigate("/")
 
         }).catch((error)=>{
             console.log(error)
