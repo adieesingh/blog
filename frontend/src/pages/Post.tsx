@@ -15,7 +15,7 @@ export const Post =()=>{
     const navigate =useNavigate()
     const handle =async ()=>{
         try {
-            console.log(import.meta.env.VITE_APP_BACKEND_URL)
+           
        
         await axios.post(`${import.meta.env.VITE_APP_BACKEND_URL}/v1/blog`,{
             title,
