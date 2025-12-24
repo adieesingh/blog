@@ -4,17 +4,6 @@ import { SignIn } from './pages/Signin'
 import { Signup } from './pages/Signup'
 import { Post } from './pages/Post'
 
-
-
-
-
-
-
-
-
-
-
-
 function App() {
   
    

@@ -6,7 +6,6 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router"
 
 
-
 export const SignIn=()=>{
     const [username,setUsername]=useState("")
     const [password,setPassword]=useState("")
@@ -36,7 +35,7 @@ export const SignIn=()=>{
     }
     return <div className="h-screen w-100% flex justify-center items-center border-r border-[]">
             <div className="h-auto w-[30%] border border-[#E5E5E5] flex flex-col p-4">
-                <Header bold="dark" size="lg"  text="Sign In"></Header>
+                <Header bold="dark" size="lg"  text="Sign In" align={true}></Header>
                 <InputBox text="Username" type="text" placeholder="JohnDoe@123" name="username" value={username} onChange={(e)=>setUsername(e.target.value)} ></InputBox>
                 <InputBox text="Password" type="password" placeholder="John@1234" name="password" value={password} onChange={(e)=>{setPassword(e.target.value)}}></InputBox>
                 <div className="py-4">

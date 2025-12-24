@@ -5,6 +5,7 @@ export interface Headerprops{
     size?:Sizes
     bold?:bolds
     align?:boolean
+    style?:string
 }
 
 const boldVaraint ={
@@ -17,7 +18,8 @@ const sizeVaraint ={
     md:"text-2xl",
     lg:"text-4xl"
 }
+const style= "cursor-pointer"
 
 export const Header =(props:Headerprops)=>{
-    return <h2 className={`${sizeVaraint[props.size]} ${boldVaraint[props.bold]} ${props.align?"justify-center text-center":""}`}>{props.text}</h2>
+    return <h2 className={`${sizeVaraint[props.size]} ${boldVaraint[props.bold]} ${props.align?"justify-center text-center":""} ${style}`}>{props.text}</h2>
 }

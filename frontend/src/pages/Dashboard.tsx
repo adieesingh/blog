@@ -6,8 +6,7 @@ import { StaffPicks } from "../components/StaffPicks";
 export function Dashboard(){
     return <div>
       <div>
-      
-        <NavBar headers={{text:"Medium", bold:"dark",size:"lg" }}></NavBar>
+      <NavBar headers={{text:"Medium", bold:"dark",size:"lg" }}></NavBar>
       </div>
       <div className='flex'>
         <SideBar></SideBar>

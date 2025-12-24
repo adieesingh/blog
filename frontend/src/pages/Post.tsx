@@ -1,13 +1,9 @@
 import { useState } from "react"
 import { InputBoxContent } from "../components/InputBoxPost"
-// import { NavBar } from "../components/NavBar"
 import axios from "axios"
 import { NavBar } from "../components/NavBar"
 import { ButtonProps } from "../components/ButtonProps"
 import { useNavigate } from "react-router"
-
-
-
 
 export const Post =()=>{
     const [title,setTitle]=useState("")
@@ -15,9 +11,7 @@ export const Post =()=>{
     const navigate =useNavigate()
     const handle =async ()=>{
         try {
-           
-       
-        await axios.post(`${import.meta.env.VITE_APP_BACKEND_URL}/v1/blog`,{
+             await axios.post(`${import.meta.env.VITE_APP_BACKEND_URL}/v1/blog`,{
             title,
             content
         },{
