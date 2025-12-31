@@ -18,8 +18,8 @@ const sizeVaraint ={
     md:"text-2xl",
     lg:"text-4xl"
 }
-const style= "cursor-pointer"
+const style= "cursor-pointer text-xl  md:text-lg sm:text-md"
 
 export const Header =(props:Headerprops)=>{
-    return <h2 className={`${sizeVaraint[props.size]} ${boldVaraint[props.bold]} ${props.align?"justify-center text-center":""} ${style}`}>{props.text}</h2>
+    return <h2 className={`${style} ${sizeVaraint[props.size]} ${boldVaraint[props.bold]} ${props.align?"justify-center text-center":""} `}>{props.text}</h2>
 }

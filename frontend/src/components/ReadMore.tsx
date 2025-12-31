@@ -16,9 +16,9 @@ ReadMore =(props:ReadMoreProps)=>{
     const limit =props.limit
     const texttitle = props.title.length>limit?props.title.slice(0,limit)+"...":props.title
     const textcontent = props.content.length>limit?props.content.slice(0,limit)+"...":props.content
-    return <div className="h-max w-full  box-border border-b b-[#727272] ">
+    return <div className="h-max w-full  box-border border-b b-[#727272] -z-58">
     <div className='flex justify-between items-center '>
-      <div className="flex flex-col  p-4 w-[70%]">
+      <div className="flex flex-col p-4">
         <div className="font-bold pb-4 wrap-break-word">
        
         {texttitle}
@@ -30,7 +30,7 @@ ReadMore =(props:ReadMoreProps)=>{
         
       </div>
       <div className='flex px-2 py-2' >
-            <img src={photo} alt="photo"  className='h-40 w-40 object-cover'/>
+            <img src={photo} alt="photo"  className='max-w-56 '/>
         </div>
       
     </div>
