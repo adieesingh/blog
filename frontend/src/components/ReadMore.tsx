@@ -30,7 +30,7 @@ ReadMore =(props:ReadMoreProps)=>{
         
       </div>
       <div className='flex px-2 py-2' >
-            <img src={photo} alt="photo"  className='lg:max-w-56 sm:max-w-full h-full '/>
+            <img src={photo} alt="photo"  className='lg:max-w-56 sm:max-w-full md:max-w-36 h-full '/>
         </div>
       
     </div>
