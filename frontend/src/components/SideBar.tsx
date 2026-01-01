@@ -6,14 +6,14 @@ import { Profile } from "../icons/Profile";
 import { Stories } from "../icons/Stories";
 import { SideBarItem } from "./SideBarItem";
 const style =
-  "h-screen realtive w-58 bg-gray-100 flex-col items-center border-r-1 border-[#727272] pt-4 pl-4 duration-500 ";
+  "h-screen realtive w-58 bg-white flex-col items-center border-r-1 border-[#727272] pt-4 pl-4 duration-500 ";
 export const SideBar = () => {
   const isSideOpen = useRecoilValue(IsSideBarOpen);
   console.log(isSideOpen);
   return (
     <div
       className={`${
-        isSideOpen ? "transition-all z-40 -translate-x-58 top-0 left-0" : style
+        isSideOpen ? "transition-all z-40 -translate-x-58 top-0 left-0 w-0" : style
       }`}
     >
       <SideBarItem

@@ -15,7 +15,7 @@ export const NavBar = (props: NavBarProps) => {
  
    const isSiledOpen =useSetRecoilState(IsSideBarOpen)
    
-  return (<nav className="sticky max-w-full flex justify-between p-4 top-0">
+  return (<nav className="sticky max-w-full flex justify-between p-4 top-0 bg-white">
       <div className="flex justify-center items-center">
         <Menu onClick={()=>isSiledOpen(prev =>!prev)}></Menu>
       

@@ -12,7 +12,7 @@ export function Dashboard(){
       <NavBar headers={{text:"Medium", bold:"dark",size:"lg" }}></NavBar>
        </div>
       
-      <div className='flex absolute'>
+      <div className='flex'>
         <SideBar></SideBar>
         <MainContent></MainContent>
         <StaffPicks></StaffPicks>
