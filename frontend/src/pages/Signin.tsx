@@ -45,7 +45,7 @@ export const SignIn=()=>{
                 <ButtonProps 
                  
                   varaint="primary"
-                  rounded={true}
+                  
                   size="lg"
 
                  onClick={handle} text="Sign In"></ButtonProps>
