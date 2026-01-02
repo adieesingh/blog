@@ -15,14 +15,14 @@ export const NavBar = (props: NavBarProps) => {
  
    const isSiledOpen =useSetRecoilState(IsSideBarOpen)
    
-  return (<nav className="sticky max-w-full flex justify-between p-4 top-0 bg-white">
-      <div className="flex justify-center items-center">
+  return (<nav className="sticky max-w-full flex justify-between p-4 top-0 bg-white ">
+      <div className="flex justify-center items-center gap-3">
         <Menu onClick={()=>isSiledOpen(prev =>!prev)}></Menu>
       
         <Header {...props.headers} ></Header>
       </div>
       <div className="flex">
-        <ul className="flex">
+        <ul className="flex gap-3">
           <li >
             <PostIcon onClick={() => navigate("/post")} size="lg"></PostIcon>{" "}
           </li>

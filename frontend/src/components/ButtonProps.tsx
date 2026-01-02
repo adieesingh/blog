@@ -5,15 +5,16 @@ import { hover } from "../icons/PostIcon"
 
 
  const defaultStyle ="flex gap-3 font-normal"
- const hoverStyle="hover:cursor-pointer text-[#727272] hover:text-black"
+ const hoverStyle="hover:cursor-pointer text-[#727272] hover:text-bg-purple-700"
+ const responsive ="sm:max-w-full md:max-w-[90%] lg:max-w-56 h-auto"
  interface Button{
    text:string,
    startIcon?:ReactElement,
    onClick?:React.MouseEventHandler<HTMLButtonElement>
    varaint?:Variants
-   align?:"justify-center"
-   size?:Sizes
-   rounded?:boolean
+    size?:Sizes
+   rounded?:"rounded-md"
+   padding?:"px-6"|"px-3"|"px-2"
 
    
   
@@ -28,14 +29,14 @@ const sizeVaraint={
 }
 type Variants ="primary"| "secondary"
 const VariantsStyle={
-  primary:"bg-purple-500 text-white",
+  primary:"bg-purple-300 text-white",
   secondary:"bg-red-500 text-white"
 }
-const padding ="py-3"
 
 
+const padding="p-2 justify-center"
 export const ButtonProps=(props:Button)=>{
-    return <button onClick={props.onClick} className={`${hoverStyle} ${defaultStyle} ${VariantsStyle[props.varaint]} ${hover} ${props.align} ${padding} ${sizeVaraint[props.size]}`}>{props.startIcon} {props.text}</button>
+    return <button onClick={props.onClick} className={`${hoverStyle} ${defaultStyle} ${VariantsStyle[props.varaint]} ${responsive} ${padding} ${hover} ${props.padding}  ${props.rounded}  ${sizeVaraint[props.size]}`}>{props.startIcon} {props.text}</button>
    
 
 }
