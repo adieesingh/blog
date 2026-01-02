@@ -47,7 +47,7 @@ export const Signup = () => {
 
   return (
     <div className="h-screen w-100vw flex justify-center items-center">
-      <div className="w-[30%] h-auto border border-[#E5E5E5] flex flex-col p-4 justify-center">
+      <div className="h-auto sm:max-w-full border border-[#E5E5E5] flex flex-col p-4 justify-center">
         <Header 
         bold="dark"
         size="lg"
@@ -88,8 +88,8 @@ export const Signup = () => {
             </div>
         
           <ButtonProps
-        align="justify-center"
-        rounded={true}
+        
+        
         varaint="primary"
         size="md"
 
@@ -101,8 +101,10 @@ export const Signup = () => {
         onClick={handle}
         
         ></ButtonProps>
-        <span>Already Have a Account/</span>
-        <Link  to={'/signin'}>signin</Link>
+        <div className="flex">
+        <span className="text-sm font-semibold">Already Have a Account ?</span>
+        <Link  to={'/signin'} className="text-sm underline font-bold">signin</Link>
+        </div>
            
       
       </div>

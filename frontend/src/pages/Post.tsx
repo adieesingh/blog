@@ -37,7 +37,7 @@ export const Post =()=>{
     
     return <div className="h-screen W-full" >
        <NavBar headers={{bold:"dark",size:"lg",text:"Medium"}}></NavBar>
-        <div className="w-[80%] mt-5 flex m-20 flex-col">
+        <div className="max-w-full  flex flex-col justify-center items-center">
             <InputBoxContent
             size="md"
             name="title"
@@ -56,8 +56,10 @@ export const Post =()=>{
             value={content}
             fontWeight="sm"
             ></InputBoxContent>
-
-            <ButtonProps  text="Publish" varaint="secondary" onClick={handle} align="justify-center" size="lg"></ButtonProps>
+            <div>
+                <ButtonProps  text="Publish" varaint="secondary" onClick={handle}  size="lg" rounded="rounded-md" padding="px-6"></ButtonProps>
+            </div>
+            
         </div>
     </div>
 }
