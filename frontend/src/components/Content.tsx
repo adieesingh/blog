@@ -12,22 +12,19 @@ export function Content(){
   
  useEffect(()=>{
       
-      const response =axios.get(`${apiUrl}/v1/post`).then((response)=>{
+      axios.get(`${apiUrl}/v1/post`).then((response)=>{
         
         setData(response.data.message)
         
       }).catch((err)=>{
           console.log(err)
-      })
-      if(response){
-        setIsLoading(false)
-       
-      }
+      }).finally(()=>setIsLoading(false))
+      
       
  },[])
  
   if(isLoading){
-    return <div >
+    return <div className='w-full'>
       <Skeleton></Skeleton>
       <Skeleton></Skeleton>
       <Skeleton></Skeleton>
