@@ -1,20 +1,20 @@
 import mongoose from 'mongoose';
-export declare const UserModel: mongoose.Model<{
-    username: string;
-    password: string;
-    name?: string | null;
+export declare const ImageModel: mongoose.Model<{
+    userId: mongoose.Types.ObjectId;
+    path: string;
+    filename: string;
 }, {}, {}, {
     id: string;
 }, mongoose.Document<unknown, {}, {
-    username: string;
-    password: string;
-    name?: string | null;
+    userId: mongoose.Types.ObjectId;
+    path: string;
+    filename: string;
 }, {
     id: string;
 }, mongoose.DefaultSchemaOptions> & Omit<{
-    username: string;
-    password: string;
-    name?: string | null;
+    userId: mongoose.Types.ObjectId;
+    path: string;
+    filename: string;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -22,20 +22,105 @@ export declare const UserModel: mongoose.Model<{
 }, "id"> & {
     id: string;
 }, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
+    userId: mongoose.Types.ObjectId;
+    path: string;
+    filename: string;
+}, mongoose.Document<unknown, {}, {
+    userId: mongoose.Types.ObjectId;
+    path: string;
+    filename: string;
+}, {
+    id: string;
+}, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & Omit<{
+    userId: mongoose.Types.ObjectId;
+    path: string;
+    filename: string;
+} & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}, "id"> & {
+    id: string;
+}, {
+    [path: string]: mongoose.SchemaDefinitionProperty<undefined, any, any>;
+} | {
+    [x: string]: mongoose.SchemaDefinitionProperty<any, any, mongoose.Document<unknown, {}, {
+        userId: mongoose.Types.ObjectId;
+        path: string;
+        filename: string;
+    }, {
+        id: string;
+    }, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & Omit<{
+        userId: mongoose.Types.ObjectId;
+        path: string;
+        filename: string;
+    } & {
+        _id: mongoose.Types.ObjectId;
+    } & {
+        __v: number;
+    }, "id"> & {
+        id: string;
+    }> | undefined;
+}, {
+    userId: mongoose.Types.ObjectId;
+    path: string;
+    filename: string;
+} & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}>, {
+    userId: mongoose.Types.ObjectId;
+    path: string;
+    filename: string;
+} & {
+    _id: mongoose.Types.ObjectId;
+} & {
+    __v: number;
+}>;
+export declare const UserModel: mongoose.Model<{
     username: string;
     password: string;
     name?: string | null;
+} & mongoose.DefaultTimestampProps, {}, {}, {
+    id: string;
 }, mongoose.Document<unknown, {}, {
     username: string;
     password: string;
     name?: string | null;
-}, {
+} & mongoose.DefaultTimestampProps, {
     id: string;
-}, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & Omit<{
+}, {
+    timestamps: true;
+}> & Omit<{
     username: string;
     password: string;
     name?: string | null;
+} & mongoose.DefaultTimestampProps & {
+    _id: mongoose.Types.ObjectId;
 } & {
+    __v: number;
+}, "id"> & {
+    id: string;
+}, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any, any>, {}, {}, {}, {}, {
+    timestamps: true;
+}, {
+    username: string;
+    password: string;
+    name?: string | null;
+} & mongoose.DefaultTimestampProps, mongoose.Document<unknown, {}, {
+    username: string;
+    password: string;
+    name?: string | null;
+} & mongoose.DefaultTimestampProps, {
+    id: string;
+}, mongoose.ResolveSchemaOptions<{
+    timestamps: true;
+}>> & Omit<{
+    username: string;
+    password: string;
+    name?: string | null;
+} & mongoose.DefaultTimestampProps & {
     _id: mongoose.Types.ObjectId;
 } & {
     __v: number;
@@ -48,13 +133,15 @@ export declare const UserModel: mongoose.Model<{
         username: string;
         password: string;
         name?: string | null;
-    }, {
+    } & mongoose.DefaultTimestampProps, {
         id: string;
-    }, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & Omit<{
+    }, mongoose.ResolveSchemaOptions<{
+        timestamps: true;
+    }>> & Omit<{
         username: string;
         password: string;
         name?: string | null;
-    } & {
+    } & mongoose.DefaultTimestampProps & {
         _id: mongoose.Types.ObjectId;
     } & {
         __v: number;
@@ -65,6 +152,8 @@ export declare const UserModel: mongoose.Model<{
     username: string;
     password: string;
     name?: string | null;
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -73,6 +162,8 @@ export declare const UserModel: mongoose.Model<{
     username: string;
     password: string;
     name?: string | null;
+    createdAt: NativeDate;
+    updatedAt: NativeDate;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {

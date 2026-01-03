@@ -2,14 +2,27 @@ import express from 'express'
 import cors from 'cors'
 import jwt  from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import { ContentModel, UserModel } from './db.js'
+import { ContentModel, ImageModel, UserModel } from './db.js'
 import { authMiddleware } from './middleware.js'
 dotenv.config()
+import multer from 'multer'
 
 const app = express()
 app.use(express.json())
 app.use(cors())
 
+//handle multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads')
+  },
+  filename: function (req, file, cb) {
+    
+    cb(null, `${Date.now()}-${file.originalname}`)
+  }
+})
+
+const upload = multer({ storage: storage })
 // Making signup route
 app.post("/api/v1/signup",async (req,res)=>{
    
@@ -125,7 +138,43 @@ app.get("/v1/post",async (req,res)=>{
         })
        }
 })
+// Making Route For Phot upload
+app.post("/upload",upload.single('photo'),authMiddleware, async(req,res)=>{
+   
 
+    try {
+        //@ts-ignore
+        const {path,filename}= req.file;
+        //@ts-ignore
+        const userId=req.userId
+        console.log(path)
+        console.log(filename)
+        //@ts-ignore
+        const image = await ImageModel({path,filename,userId})
+        console.log(image)
+        if(!image){
+            return res.status(411).json({
+                message:"Photo not Uploaded"
+            })
+        }
+        if(image){
+            await image.save();
+            return res.status(200).json({
+                message:"Photo Uploaded Sucessfully"
+            })
+        }
+
+     
+    } catch (error) {
+    return res.status(500).json({
+        error,
+        message:"Something went wrong"
+    })
+    }
+
+    
+    
+})
 // Listening 
 
 app.listen(process.env.PORT,()=>{
