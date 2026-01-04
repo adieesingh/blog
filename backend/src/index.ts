@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import jwt  from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import { ContentModel, ImageModel, UserModel } from './db.js'
+import { ContentModel,  UserModel } from './db.js'
 import { authMiddleware } from './middleware.js'
 dotenv.config()
 import multer from 'multer'
@@ -11,18 +11,10 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-//handle multer
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads')
-  },
-  filename: function (req, file, cb) {
-    
-    cb(null, `${Date.now()}-${file.originalname}`)
-  }
-})
 
-const upload = multer({ storage: storage })
+
+
+
 // Making signup route
 app.post("/api/v1/signup",async (req,res)=>{
    
@@ -90,18 +82,42 @@ app.post("/api/v1/signin",async (req,res)=>{
     
    
 })
-
+ const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads')
+  },
+  filename: function (req, file, cb) {
+    
+    cb(null, `${Date.now()}-${file.originalname}`)
+  }
+})
+const upload = multer({ storage: storage })
 // Write a blog 
-app.post("/v1/blog",authMiddleware,async (req,res)=>{
+app.post("/v1/blog",upload.single('photo'),authMiddleware,async (req,res)=>{
+    console.log(req.file)
+   
     try {
-    const title = req.body.title
+     const title = req.body.title
     const content = req.body.content
+    const imageData ={
+        path:req.file?.path as string,
+        filename:req.file?.filename as string
+    }
+   if(!imageData) return res.status(411).json({"message":"Not uploaded"})
+
+   
+
+   
+
+const upload = multer({ storage: storage })
     
     const response = await ContentModel.create({
         title:title,
         content:content,
         //@ts-ignore
-        userId:req.userId
+        userId:req.userId,
+        image:imageData
+        
 
     })
     if(!response){
@@ -138,43 +154,8 @@ app.get("/v1/post",async (req,res)=>{
         })
        }
 })
-// Making Route For Phot upload
-app.post("/upload",upload.single('photo'),authMiddleware, async(req,res)=>{
-   
 
-    try {
-        //@ts-ignore
-        const {path,filename}= req.file;
-        //@ts-ignore
-        const userId=req.userId
-        console.log(path)
-        console.log(filename)
-        //@ts-ignore
-        const image = await ImageModel({path,filename,userId})
-        console.log(image)
-        if(!image){
-            return res.status(411).json({
-                message:"Photo not Uploaded"
-            })
-        }
-        if(image){
-            await image.save();
-            return res.status(200).json({
-                message:"Photo Uploaded Sucessfully"
-            })
-        }
 
-     
-    } catch (error) {
-    return res.status(500).json({
-        error,
-        message:"Something went wrong"
-    })
-    }
-
-    
-    
-})
 // Listening 
 
 app.listen(process.env.PORT,()=>{
