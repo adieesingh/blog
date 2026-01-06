@@ -11,31 +11,40 @@ export const Post = () => {
   const [content, setContent] = useState("");
   const navigate = useNavigate();
   const [img, setImage] = useState<File | null>(null);
-  const formdata = new FormData();
-  formdata.append("photo", img);
-  formdata.append("title", title);
-  formdata.append("content", content);
-  console.log(formdata);
+
+
   const handle = async () => {
     try {
+
+      const formdata = new FormData();
+      formdata.append("title", title);
+      formdata.append("content", content);
+      if (img) {
+        formdata.append("photo", img);
+      }
+     
+
       await axios({
         method: "POST",
         url: `${`http://localhost:3000`}/v1/blog`,
         data: formdata,
         headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+           "Content-Type": "multipart/form-data",
+        
         },
-      })
-        .then(() => {
-          alert("data inserted succesfully");
+      }).then(() => {
+        alert("data inserted succesfully");
 
-          navigate("/");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        navigate("/");
+      });
     } catch (error) {
+      if (axios.isAxiosError(error)) {
+      console.error("Error:", error.response?.data);
+         console.error("Status:", error.response?.status);
+        
+        console.error("Request headers:", error.config?.headers);
+    }
       console.log(error);
     }
   };

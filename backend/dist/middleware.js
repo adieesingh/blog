@@ -7,7 +7,9 @@ export const authMiddleware = (req, res, next) => {
                 message: "Token Not Found"
             });
         }
-        const decode = jwt.verify(header, process.env.JWT_SECRECT);
+        const authHeader = header.startsWith("Bearer") ? header.substring(7) : header;
+        console.log("token is" + authHeader);
+        const decode = jwt.verify(authHeader, process.env.JWT_SECRECT);
         if (decode) {
             //@ts-ignore
             req.userId = decode.id;

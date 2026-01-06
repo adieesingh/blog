@@ -1,11 +1,12 @@
 import { Comment } from "../icons/Comment";
 import { Like } from "../icons/Like";
-import photo from "../images/photo.jpg";
+import photo from '../images/photo.jpg'
 
 interface ReadMoreProps {
   limit: number;
   title: string;
   content: string;
+  imageUrl:string,
 }
 
 export const ReadMore = (props: ReadMoreProps) => {
@@ -30,7 +31,7 @@ export const ReadMore = (props: ReadMoreProps) => {
       </div>
     </div>
       <div className="p-4 w-30 h-30  lg:max-w-full lg:max-h-full shrink-0">
-        <img src={photo} alt="photo" className="h-full object-cover" />
+        <img src={`${props.imageUrl}?${props.imageUrl}?${photo}`} alt="photo" className="h-full object-cover" />
        </div>
        </div>
        

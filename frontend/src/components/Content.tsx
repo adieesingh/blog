@@ -11,15 +11,13 @@ export function Content(){
   const apiUrl =import.meta.env.VITE_APP_BACKEND_URL
   
  useEffect(()=>{
-      
+      setIsLoading(true)
       axios({
         method:"GET",
         url:`${apiUrl}/v1/post`,
-        headers:{"Content-Type":"multipart/form-data"}
-
+  
       }).then((response)=>{
-        console.log(response)
-        setData(response.data.message)
+       setData(response.data.message || response.data.response || [])
       }).catch((err)=>{
         console.log(err)
       }).finally(()=>setIsLoading(false))   
@@ -34,18 +32,16 @@ export function Content(){
       <Skeleton></Skeleton>
       <Skeleton></Skeleton>
       <Skeleton></Skeleton>
-
-
-
-
       </div>
   }
   if(!isLoading) {
       return <div>
+      
     {
+      
       data.map((res)=>(
         //@ts-ignore
-        <ReadMore  limit={140} title={res.title} content={res.content}></ReadMore>
+        <ReadMore  limit={140} key={res._id} title={res.title} content={res.content} imageUrl={res.image.imgUrl}></ReadMore>
       ))
     }
   </div>
