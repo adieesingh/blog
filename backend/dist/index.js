@@ -15,7 +15,7 @@ app.use(express.static("uploads"));
 cloudinary.config({
     cloud_name: process.env.CLOUDNIARY_CLOUD_NAME,
     api_key: process.env.CLOUDNIARY_API_KEY,
-    api_secret: process.env.CLOUDNIARY_API_SECRET
+    api_secret: process.env.CLOUDNIARY_API_SECRET,
 });
 // Making signup route
 app.post("/api/v1/signup", async (req, res) => {
@@ -90,16 +90,14 @@ app.post("/v1/blog", upload.single("photo"), authMiddleware, async (req, res) =>
         const title = req.body.title;
         const content = req.body.content;
         const file = req.file?.path;
-        console.log(req.file);
         const cloudinaryResponse = await cloudinary.uploader.upload(file, {
             folder: "Medium_Blog_Image",
         });
-        console.log(cloudinaryResponse);
         const image = {
             //@ts-ignore
             fileName: req.file?.filename,
             public_id: cloudinaryResponse.public_id,
-            imgUrl: cloudinaryResponse.secure_url
+            imgUrl: cloudinaryResponse.secure_url,
         };
         const saveToDb = await ContentModel.create({
             title: title,
@@ -107,7 +105,7 @@ app.post("/v1/blog", upload.single("photo"), authMiddleware, async (req, res) =>
             //@ts-ignore
             image: image,
             //@ts-ignore
-            userId: req.userId
+            userId: req.userId,
         });
         if (saveToDb) {
             return res.status(200).json({ message: "Succesfully uploaded" });
@@ -116,7 +114,7 @@ app.post("/v1/blog", upload.single("photo"), authMiddleware, async (req, res) =>
     catch (error) {
         console.log(error);
         return res.status(500).json({
-            message: "Something went wrong"
+            message: "Something went wrong",
         });
     }
 });
@@ -127,10 +125,9 @@ app.get("/v1/post", async (req, res) => {
             message: "Error While fetching data",
         });
     }
-    console.log(response);
     if (response) {
         return res.status(200).json({
-            response
+            response,
         });
     }
 });

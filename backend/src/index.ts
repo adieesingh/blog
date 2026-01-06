@@ -12,6 +12,7 @@ import path from "path";
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(express.urlencoded({extended:true}))
 app.use(express.static("uploads"));
 
 cloudinary.config({
@@ -90,11 +91,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 // Write a blog
-app.post(
-  "/v1/blog",
-  upload.single("photo"),
-  authMiddleware,
-  async (req, res) => {
+app.post("/v1/blog",upload.single("photo"),authMiddleware,async (req, res) => {
     try {
       const title = req.body.title;
       const content = req.body.content;
@@ -107,6 +104,7 @@ app.post(
       );
 
       const image = {
+  
         //@ts-ignore
         fileName: req.file?.filename as string,
         public_id: cloudinaryResponse.public_id,

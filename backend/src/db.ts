@@ -24,8 +24,6 @@ const PostSchema = new Schema({
 },{timestamps:true})
 
 
-
-
 export const UserModel = model('User',UserSchema)
 export const ContentModel = model('Content',PostSchema)
 
