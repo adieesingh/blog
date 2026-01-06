@@ -8,6 +8,7 @@ import { v2 as cloudinary } from "cloudinary";
 dotenv.config();
 import multer from "multer";
 import path from "path";
+import { Readable } from "stream";
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -77,16 +78,32 @@ app.post("/api/v1/signin", async (req, res) => {
     }
 });
 const storage = multer.memoryStorage();
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage, limits: { fileSize: 5 * 1024 * 1024 } });
+const uploadToCloudinary = (buffer, originalname) => {
+    return new Promise((resolve, reject) => {
+        const uploadStream = cloudinary.uploader.upload_stream({
+            folder: "Medium_Blog_Image",
+            resource_type: "auto"
+        }, (error, result) => {
+            if (error)
+                reject(error);
+            else
+                resolve(result);
+        });
+        const readable = Readable.from(buffer);
+        readable.pipe(uploadStream);
+    });
+};
 // Write a blog
 app.post("/v1/blog", upload.single("photo"), authMiddleware, async (req, res) => {
     try {
         const title = req.body.title;
         const content = req.body.content;
-        const file = req.file?.path;
-        const cloudinaryResponse = await cloudinary.uploader.upload(file, {
-            folder: "Medium_Blog_Image",
-        });
+        const file = req.file?.originalname;
+        if (!req.file?.buffer || !req.file.originalname) {
+            return res.status(411).json({ message: "Not found" });
+        }
+        const cloudinaryResponse = await uploadToCloudinary(req.file?.buffer, req.file?.originalname);
         const image = {
             //@ts-ignore
             fileName: req.file?.filename,
