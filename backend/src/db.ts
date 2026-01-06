@@ -4,8 +4,9 @@ dotenv.config();
 
 mongoose.connect(process.env.MONGO_URL || "")
 const imageSchema = new Schema({
-    path:{type:String,required:true},
-    filename:{type:String,required:true},
+    fileName:{type:String,required:true},
+    public_id:{type:String,required:true},
+    imgUrl:{type:String,required:true}
     
 },{_id:false})           
 const UserSchema = new Schema({

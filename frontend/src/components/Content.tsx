@@ -12,15 +12,17 @@ export function Content(){
   
  useEffect(()=>{
       
-      axios.get(`${apiUrl}/v1/post`).then((response)=>{
-        
+      axios({
+        method:"GET",
+        url:`${apiUrl}/v1/post`,
+        headers:{"Content-Type":"multipart/form-data"}
+
+      }).then((response)=>{
+        console.log(response)
         setData(response.data.message)
-        
       }).catch((err)=>{
-          console.log(err)
-      }).finally(()=>setIsLoading(false))
-      
-      
+        console.log(err)
+      }).finally(()=>setIsLoading(false))   
  },[])
  
   if(isLoading){
@@ -30,6 +32,9 @@ export function Content(){
       <Skeleton></Skeleton>
       <Skeleton></Skeleton>
       <Skeleton></Skeleton>
+      <Skeleton></Skeleton>
+      <Skeleton></Skeleton>
+
 
 
 

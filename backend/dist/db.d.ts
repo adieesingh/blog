@@ -95,8 +95,9 @@ export declare const ContentModel: mongoose.Model<{
     content: string;
     userId: mongoose.Types.ObjectId;
     image?: {
-        path: string;
-        filename: string;
+        fileName: string;
+        public_id: string;
+        imgUrl: string;
     } | null;
 } & mongoose.DefaultTimestampProps, {}, {}, {
     id: string;
@@ -105,8 +106,9 @@ export declare const ContentModel: mongoose.Model<{
     content: string;
     userId: mongoose.Types.ObjectId;
     image?: {
-        path: string;
-        filename: string;
+        fileName: string;
+        public_id: string;
+        imgUrl: string;
     } | null;
 } & mongoose.DefaultTimestampProps, {
     id: string;
@@ -117,8 +119,9 @@ export declare const ContentModel: mongoose.Model<{
     content: string;
     userId: mongoose.Types.ObjectId;
     image?: {
-        path: string;
-        filename: string;
+        fileName: string;
+        public_id: string;
+        imgUrl: string;
     } | null;
 } & mongoose.DefaultTimestampProps & {
     _id: mongoose.Types.ObjectId;
@@ -133,16 +136,18 @@ export declare const ContentModel: mongoose.Model<{
     content: string;
     userId: mongoose.Types.ObjectId;
     image?: {
-        path: string;
-        filename: string;
+        fileName: string;
+        public_id: string;
+        imgUrl: string;
     } | null;
 } & mongoose.DefaultTimestampProps, mongoose.Document<unknown, {}, {
     title: string;
     content: string;
     userId: mongoose.Types.ObjectId;
     image?: {
-        path: string;
-        filename: string;
+        fileName: string;
+        public_id: string;
+        imgUrl: string;
     } | null;
 } & mongoose.DefaultTimestampProps, {
     id: string;
@@ -153,8 +158,9 @@ export declare const ContentModel: mongoose.Model<{
     content: string;
     userId: mongoose.Types.ObjectId;
     image?: {
-        path: string;
-        filename: string;
+        fileName: string;
+        public_id: string;
+        imgUrl: string;
     } | null;
 } & mongoose.DefaultTimestampProps & {
     _id: mongoose.Types.ObjectId;
@@ -170,8 +176,9 @@ export declare const ContentModel: mongoose.Model<{
         content: string;
         userId: mongoose.Types.ObjectId;
         image?: {
-            path: string;
-            filename: string;
+            fileName: string;
+            public_id: string;
+            imgUrl: string;
         } | null;
     } & mongoose.DefaultTimestampProps, {
         id: string;
@@ -182,8 +189,9 @@ export declare const ContentModel: mongoose.Model<{
         content: string;
         userId: mongoose.Types.ObjectId;
         image?: {
-            path: string;
-            filename: string;
+            fileName: string;
+            public_id: string;
+            imgUrl: string;
         } | null;
     } & mongoose.DefaultTimestampProps & {
         _id: mongoose.Types.ObjectId;
@@ -197,8 +205,9 @@ export declare const ContentModel: mongoose.Model<{
     content: string;
     userId: mongoose.Types.ObjectId;
     image?: {
-        path: string;
-        filename: string;
+        fileName: string;
+        public_id: string;
+        imgUrl: string;
     } | null;
     createdAt: NativeDate;
     updatedAt: NativeDate;
@@ -211,8 +220,9 @@ export declare const ContentModel: mongoose.Model<{
     content: string;
     userId: mongoose.Types.ObjectId;
     image?: {
-        path: string;
-        filename: string;
+        fileName: string;
+        public_id: string;
+        imgUrl: string;
     } | null;
     createdAt: NativeDate;
     updatedAt: NativeDate;
