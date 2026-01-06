@@ -76,14 +76,7 @@ app.post("/api/v1/signin", async (req, res) => {
         });
     }
 });
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, "./uploads");
-    },
-    filename: function (req, file, cb) {
-        cb(null, `${Date.now()}-${file.originalname}`);
-    },
-});
+const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 // Write a blog
 app.post("/v1/blog", upload.single("photo"), authMiddleware, async (req, res) => {
