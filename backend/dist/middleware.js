@@ -8,7 +8,6 @@ export const authMiddleware = (req, res, next) => {
             });
         }
         const authHeader = header.startsWith("Bearer") ? header.substring(7) : header;
-        console.log("token is" + authHeader);
         const decode = jwt.verify(authHeader, process.env.JWT_SECRECT);
         if (decode) {
             //@ts-ignore
