@@ -106,10 +106,15 @@ app.post("/v1/blog", upload.single("photo"), authMiddleware, async (req, res) =>
         const cloudinaryResponse = await uploadToCloudinary(req.file?.buffer, req.file?.originalname);
         const image = {
             //@ts-ignore
-            fileName: req.file?.filename,
+            fileName: req.file?.originalname,
             public_id: cloudinaryResponse.public_id,
             imgUrl: cloudinaryResponse.secure_url,
         };
+        console.log("image is this" + image);
+        console.log("buffer is this " + req.file.buffer);
+        if (!image) {
+            return res.status(411).json({ message: "Not uploaded" });
+        }
         const saveToDb = await ContentModel.create({
             title: title,
             content: content,
@@ -120,6 +125,10 @@ app.post("/v1/blog", upload.single("photo"), authMiddleware, async (req, res) =>
         });
         if (saveToDb) {
             return res.status(200).json({ message: "Succesfully uploaded" });
+        }
+        console.log(saveToDb);
+        if (!saveToDb) {
+            return res.status(411).json({ message: "Not save in db" });
         }
     }
     catch (error) {
