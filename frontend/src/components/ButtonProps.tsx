@@ -5,7 +5,7 @@ import { hover } from "../icons/PostIcon"
 
 
  const defaultStyle ="flex gap-3 font-normal"
- const hoverStyle="hover:cursor-pointer text-[#727272] hover:text-bg-purple-700"
+ const hoverStyle="hover:cursor-pointer text-[#727272] hover:bg-indigo-700 hover:text-white"
  const responsive ="sm:max-w-full md:max-w-[90%] lg:max-w-56 h-auto"
  interface Button{
    text:string,

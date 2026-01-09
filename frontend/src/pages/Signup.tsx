@@ -13,7 +13,6 @@ export const Signup = () => {
   const [password, setPassword] = useState("");
   const navigate =useNavigate()
   const apiUrl = import.meta.env.VITE_APP_BACKEND_URL
-  console.log(import.meta.env.VITE_APP_BACKEND_URL)
   const handle = async () => {
     console.log("First step");
 
@@ -35,8 +34,7 @@ export const Signup = () => {
       }
       if (!response) {
         alert("Not register");
-        //@ts-ignore
-        console.log(response.data.error)
+        
 
       }
     } catch (error) {
