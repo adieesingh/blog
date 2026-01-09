@@ -15,7 +15,7 @@ export const Post = () => {
 
   const handle = async () => {
     try {
-
+        
       const formdata = new FormData();
       formdata.append("title", title);
       formdata.append("content", content);
@@ -26,7 +26,7 @@ export const Post = () => {
 
       await axios({
         method: "POST",
-        url: `${`http://localhost:3000`}/v1/blog`,
+        url: `${import.meta.env.VITE_APP_BACKEND_URL}/v1/blog`,
         data: formdata,
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -35,7 +35,7 @@ export const Post = () => {
         },
       }).then(() => {
         alert("data inserted succesfully");
-
+       
         navigate("/");
       });
     } catch (error) {
@@ -78,7 +78,7 @@ export const Post = () => {
         <div>
           <ButtonProps
             text="Publish"
-            varaint="secondary"
+            varaint="primary"
             onClick={handle}
             size="lg"
             rounded="rounded-md"

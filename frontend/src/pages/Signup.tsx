@@ -101,9 +101,9 @@ export const Signup = () => {
         onClick={handle}
         
         ></ButtonProps>
-        <div className="flex">
-        <span className="text-sm font-semibold">Already Have a Account ?</span>
-        <Link  to={'/signin'} className="text-sm underline font-bold">signin</Link>
+        <div className="flex p-2">
+        <span className="text-sm font-semibold">Already Have a Account? </span>
+        <Link  to={'/signin'} className="text-sm underline font-bold"> Signin</Link>
         </div>
            
       

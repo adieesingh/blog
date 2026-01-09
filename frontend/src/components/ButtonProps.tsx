@@ -29,7 +29,7 @@ const sizeVaraint={
 }
 type Variants ="primary"| "secondary"
 const VariantsStyle={
-  primary:"bg-purple-300 text-white",
+  primary:"bg-indigo-500 text-white",
   secondary:"bg-red-500 text-white"
 }
 

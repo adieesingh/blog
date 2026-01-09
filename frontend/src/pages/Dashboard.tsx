@@ -5,9 +5,9 @@ import { SideBar } from "../components/SideBar";
 import { StaffPicks } from "../components/StaffPicks";
 
 export function Dashboard(){
- 
+
     return <div>
-     
+
       <div className="border-b-2 w-full sticky top-0">
       <NavBar headers={{text:"Medium", bold:"dark",size:"lg" }}></NavBar>
        </div>

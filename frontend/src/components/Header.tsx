@@ -20,7 +20,7 @@ const sizeVaraint ={
     md:"text-2xl",
     lg:"text-4xl"
 }
-const style= "cursor-pointer text-center sm:text-md sm:max-w-24 max-w-full"
+const style="cursor-pointer text-center sm:text-md sm:max-w-lg"
 
 export const Header =(props:Headerprops)=>{
     return <Link to={'/'} className={`${style} ${sizeVaraint[props.size]} ${boldVaraint[props.bold]} ${props.align?"justify-center":""} `}>{props.text}</Link>
