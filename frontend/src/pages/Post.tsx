@@ -5,6 +5,7 @@ import { NavBar } from "../components/NavBar";
 import { ButtonProps } from "../components/ButtonProps";
 import { useNavigate } from "react-router";
 import { ImageDrop } from "../components/ImageDrop";
+import {toast} from 'react-toastify'
 
 export const Post = () => {
   const [title, setTitle] = useState("");
@@ -34,18 +35,13 @@ export const Post = () => {
         
         },
       }).then(() => {
-        alert("data inserted succesfully");
+        toast.success("Sucessfully Posted");
        
         navigate("/");
       });
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-      console.error("Error:", error.response?.data);
-         console.error("Status:", error.response?.status);
-        
-        console.error("Request headers:", error.config?.headers);
-    }
-      console.log(error);
+     toast.error("Something went wrong")
+      
     }
   };
 

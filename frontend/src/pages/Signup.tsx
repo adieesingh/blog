@@ -4,7 +4,7 @@ import { Header } from "../components/Header";
 import { InputBox } from "../components/InputBox";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-
+import {toast} from 'react-toastify';
 
 
 export const Signup = () => {
@@ -28,17 +28,17 @@ export const Signup = () => {
       });   
       
       if (response) {
-        alert("Signup Sucessfully");
-        console.log("Register");
+        toast.success("Signup Sucessfully");
+        
         navigate('/signin')
       }
       if (!response) {
-        alert("Not register");
+        toast.error("Not register");
         
 
       }
     } catch (error) {
-      alert("something went wrong");
+      toast.error("something went wrong");
       console.log(error)
     }
   };

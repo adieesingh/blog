@@ -13,7 +13,7 @@ import { isLoggedInAtom } from './atom/IsLoggedIn'
 
 function App() {
   const [isLoggedIn,setLoggedIn] =useRecoilState(isLoggedInAtom)
-   console.log(isLoggedIn)
+   
   return (
     <div>
     <BrowserRouter>

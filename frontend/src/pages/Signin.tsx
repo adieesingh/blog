@@ -4,7 +4,7 @@ import { InputBox } from "../components/InputBox"
 import { ButtonProps } from "../components/ButtonProps"
 import axios from "axios"
 import { Link, useNavigate } from "react-router"
-
+import {toast} from 'react-toastify'
 type SigninProps={
    setLoggedIn:React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -22,20 +22,20 @@ export const SignIn=({setLoggedIn}:SigninProps)=>{
         password
      })
      if(response){
-        alert("Sign In Sucessfully")
-        console.log(response.data.token)
+        toast.success("Sign In Sucessfully")
+        
         localStorage.setItem("token",response.data.token)
         setLoggedIn(true)
-        console.log(setLoggedIn)
+        
         navigate('/')
        
      }
      if(!response){
-        alert("Not response")
+        toast.error("Not response")
      }
         } catch (error) {
-           console.log(error)
-           alert("something went wrong") 
+          
+           toast.error("something went wrong") 
         }
      
     }
