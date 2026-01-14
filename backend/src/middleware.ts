@@ -9,7 +9,7 @@ export const authMiddleware =(req:Request,res:Response,next:NextFunction)=>{
             })
         }
         const authHeader=header.startsWith("Bearer")?header.substring(7):header
-        console.log("token is"+ authHeader)
+        
     const decode= jwt.verify(authHeader,process.env.JWT_SECRECT as string)
     
     if(decode){

@@ -15,6 +15,7 @@ import { hover } from "../icons/PostIcon"
     size?:Sizes
    rounded?:"rounded-md"
    padding?:"px-6"|"px-3"|"px-2"
+   cursor?:"cursor-progress"|"cursor-pointer"
 
    
   
@@ -30,13 +31,13 @@ const sizeVaraint={
 type Variants ="primary"| "secondary"
 const VariantsStyle={
   primary:"bg-indigo-500 text-white",
-  secondary:"bg-red-500 text-white"
+  secondary:"bg-indigo-200 text-white"
 }
 
 
 const padding="p-2 justify-center"
 export const ButtonProps=(props:Button)=>{
-    return <button onClick={props.onClick} className={`${hoverStyle} ${defaultStyle} ${VariantsStyle[props.varaint]} ${responsive} ${padding} ${hover} ${props.padding}  ${props.rounded}  ${sizeVaraint[props.size]}`}>{props.startIcon} {props.text}</button>
+    return <button onClick={props.onClick} className={`${hoverStyle} ${defaultStyle} ${VariantsStyle[props.varaint]} ${responsive} ${padding} ${hover} ${props.padding} ${props.cursor} ${props.rounded}  ${sizeVaraint[props.size]}`}>{props.startIcon} {props.text}</button>
    
 
 }

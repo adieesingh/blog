@@ -13,10 +13,13 @@ export const SignIn=({setLoggedIn}:SigninProps)=>{
     const [username,setUsername]=useState("")
     const [password,setPassword]=useState("")
     const navigate =useNavigate()
+    const [isClicked,setIsClicked]=useState(false)
     const apiUrl= import.meta.env.VITE_APP_BACKEND_URL
+    
 
     const handle =async ()=>{
         try {
+         setIsClicked(true)
         const response = await axios.post(`${apiUrl}/api/v1/signin`,{
         username,
         password
@@ -50,9 +53,10 @@ export const SignIn=({setLoggedIn}:SigninProps)=>{
                
                 <ButtonProps 
                  
-                  varaint="primary"
+                  varaint={isClicked?"secondary":"primary"}
                   
                   size="lg"
+                  cursor={isClicked?"cursor-progress":"cursor-pointer"}
 
                  onClick={handle} text="Sign In"></ButtonProps>
                  

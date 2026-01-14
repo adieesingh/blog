@@ -12,11 +12,13 @@ export const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate =useNavigate()
+  const[isClicked,seIsClicked]=useState(false)
   const apiUrl = import.meta.env.VITE_APP_BACKEND_URL
   const handle = async () => {
     console.log("First step");
 
     try {
+      seIsClicked(true)
       const response = await axios.post(`${apiUrl}/api/v1/signup`, {
        username,
        password,
@@ -88,13 +90,14 @@ export const Signup = () => {
           <ButtonProps
         
         
-        varaint="primary"
+        varaint={isClicked?"secondary":"primary"}
         size="md"
+        cursor={isClicked?"cursor-progress":"cursor-pointer"}
 
 
         
           
-        text="Sign In"
+        text="Sign Up"
           
         onClick={handle}
         
